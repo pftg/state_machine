@@ -532,14 +532,14 @@ module StateMachine
         # Configures new states with the built-in humanize scheme
         def add_states(new_states)
           super.each do |new_state|
-            new_state.human_name = lambda {|state, klass| translate(klass, :state, state.name)}
+            new_state.human_name ||= lambda {|state, klass| translate(klass, :state, state.name)}
           end
         end
         
         # Configures new event with the built-in humanize scheme
         def add_events(new_events)
           super.each do |new_event|
-            new_event.human_name = lambda {|event, klass| translate(klass, :event, event.name)}
+            new_event.human_name ||= lambda {|event, klass| translate(klass, :event, event.name)}
           end
         end
         
